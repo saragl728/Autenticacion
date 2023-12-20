@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         binding.inicioSesion.setOnClickListener {
             login()
         }
+
+        //cuando se pulse el botón registrar
+        binding.registro.setOnClickListener {
+            registro()
+        }
     }
 
     private fun login(){
@@ -44,5 +49,10 @@ class MainActivity : AppCompatActivity() {
         else {
             Toast.makeText( this, "Algún campo está vacío", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun registro(){
+        //se llama a la actividad de registro
+        startActivity(Intent(this, RegistroActivity::class.java))
     }
 }
