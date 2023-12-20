@@ -31,6 +31,8 @@ class RegistroActivity : AppCompatActivity() {
                             //variable que se pasará a la otra actividad
                             putExtra("nombreUsuario", binding.nombre.text.toString())
                         }
+                        //se pasa a la actividad de bienvenida
+                        startActivity(intent)
                     }
                     //si no se puede registrar el usuario, se dará un aviso
                     else { Toast.makeText(this, "Fallo en el registro de usuario", Toast.LENGTH_LONG).show() }
