@@ -57,8 +57,7 @@
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/modelo"
-/>
+        app:layout_constraintTop_toBottomOf="@id/modelo" />
 
     <EditText
         android:id="@+id/color"

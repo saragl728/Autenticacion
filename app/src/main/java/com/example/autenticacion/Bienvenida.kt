@@ -30,10 +30,10 @@ class Bienvenida : AppCompatActivity() {
             if (binding.marca.text.isNotEmpty() && binding.modelo.text.isNotEmpty() && binding.matricula.text.isNotEmpty() && binding.color.text.isNotEmpty()) {
                 db.collection("coches").add(
                     mapOf(
-                        "color" to binding.color.text,
-                        "marca" to binding.marca.text,
-                        "matricula" to binding.matricula.text,
-                        "modelo" to binding.modelo.text
+                        "color" to binding.color.text.toString(),
+                        "marca" to binding.marca.text.toString(),
+                        "matricula" to binding.matricula.text.toString(),
+                        "modelo" to binding.modelo.text.toString()
                     )
                 )
                     //se añade un mensaje si ha funcionado
