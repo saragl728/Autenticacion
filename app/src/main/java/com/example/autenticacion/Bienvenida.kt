@@ -63,7 +63,12 @@ class Bienvenida : AppCompatActivity() {
         }
         //eliminar coche
         binding.bEliminarCoche.setOnClickListener {
-
+            db.collection("coches").get().addOnSuccessListener {
+                it.forEach {
+                    //borra los registros de la tabla coches
+                    it.reference.delete()
+                }
+            }
         }
 
         //cierre de sesión
