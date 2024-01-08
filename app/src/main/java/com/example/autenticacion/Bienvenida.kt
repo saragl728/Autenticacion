@@ -51,6 +51,20 @@ class Bienvenida : AppCompatActivity() {
             }
         }
 
+        //editar coche
+        binding.bEditarCoche.setOnClickListener {
+            db.collection("coches").whereEqualTo("matricula", binding.matricula.text.toString()).get().addOnSuccessListener {
+                it.forEach {
+                    binding.marca.setText(it.get("marca") as String?)
+                    binding.modelo.setText(it.get("modelo") as String?)
+                    binding.color.setText(it.get("color") as String?)
+                }
+            }
+        }
+        //eliminar coche
+        binding.bEliminarCoche.setOnClickListener {
+
+        }
 
         //cierre de sesión
         binding.cierreSesion.setOnClickListener {

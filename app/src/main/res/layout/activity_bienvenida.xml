@@ -76,6 +76,26 @@
         android:text="Guardar coche"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bEditarCoche"
         app:layout_constraintTop_toBottomOf="@id/color"/>
+
+    <Button
+        android:id="@+id/bEditarCoche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar coche"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bAnyadirCoche"
+        app:layout_constraintBottom_toTopOf="@id/bEliminarCoche"/>
+
+    <Button
+        android:id="@+id/bEliminarCoche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar coche"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bEditarCoche"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
