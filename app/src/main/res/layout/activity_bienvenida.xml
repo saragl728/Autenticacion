@@ -8,22 +8,75 @@
 
     <TextView
         android:id="@+id/saludo"
-        android:textSize="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bienvenido"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/marca"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/cierreSesion"/>
+        app:layout_constraintRight_toLeftOf="@id/cierreSesion"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/cierreSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerrar sesión"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/saludo"
+        app:layout_constraintBottom_toTopOf="@id/marca"/>
+
+    <EditText
+        android:id="@+id/marca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="marca"
+        android:textSize="20dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/saludo"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/modelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="modelo"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/marca" />
+
+    <EditText
+        android:id="@+id/matricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="matrícula"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modelo"
+/>
+
+    <EditText
+        android:id="@+id/color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="color"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matricula" />
+
+    <Button
+        android:id="@+id/bAnyadirCoche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar coche"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/saludo"/>
+        app:layout_constraintTop_toBottomOf="@id/color"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
