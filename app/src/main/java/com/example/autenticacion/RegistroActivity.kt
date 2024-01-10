@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.autenticacion.databinding.ActivityRegistroBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistroActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class RegistroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val db = FirebaseFirestore.getInstance()
         title = "Nuevo usuario"
 
         //se hace click en el botón de registrar
@@ -27,6 +28,9 @@ class RegistroActivity : AppCompatActivity() {
                     binding.constrasenna.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        //crea un usuario en la tabla usuarios
+                        db.collection("usuarios").document(binding.email.text.toString()).set(mapOf("nombre" to binding.nombre.text.toString(), "apellidos" to binding.apellidos.text.toString()))
+
                         val intent = Intent(this, Bienvenida::class.java).apply {
                             //variable que se pasará a la otra actividad
                             putExtra("nombreUsuario", binding.nombre.text.toString())
