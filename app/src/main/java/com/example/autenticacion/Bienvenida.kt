@@ -24,8 +24,26 @@ class Bienvenida : AppCompatActivity() {
         //el saludo incluirá el nombre de usuario
         binding.saludo.text = "Bienvenido/a, $nombre"
 
-        //guardar coche
+        //añadir un coche conociendo el identificador(matrícula)
         binding.bAnyadirCoche.setOnClickListener {
+            //se comprueba si no hay campos vacíos
+            if (binding.marca.text.isNotEmpty() && binding.modelo.text.isNotEmpty() && binding.matricula.text.isNotEmpty() && binding.color.text.isNotEmpty()) {
+                //set sirve para añadir y actualizar
+                db.collection("coches").document(binding.matricula.text.toString()).set(
+                    mapOf(
+                        "color" to binding.color.text.toString(),
+                        "marca" to binding.marca.text.toString(),
+                        "modelo" to binding.modelo.text.toString()
+                    )
+                )
+            } else {
+                //si un campo está vacío, muestra un toast
+                Toast.makeText(this, "Algún campo está vacío", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        //guardar coche
+        /*binding.bAnyadirCoche.setOnClickListener {
             //se comprueba que no hay campos en blanco
             if (binding.marca.text.isNotEmpty() && binding.modelo.text.isNotEmpty() && binding.matricula.text.isNotEmpty() && binding.color.text.isNotEmpty()) {
                 db.collection("coches").add(
@@ -49,26 +67,32 @@ class Bienvenida : AppCompatActivity() {
                 //si un campo está vacío, muestra un toast
                 Toast.makeText(this, "Algún campo está vacío", Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
         //editar coche
         binding.bEditarCoche.setOnClickListener {
-            db.collection("coches").whereEqualTo("matricula", binding.matricula.text.toString()).get().addOnSuccessListener {
-                it.forEach {
-                    binding.marca.setText(it.get("marca") as String?)
-                    binding.modelo.setText(it.get("modelo") as String?)
-                    binding.color.setText(it.get("color") as String?)
+            db.collection("coches").whereEqualTo("matricula", binding.matricula.text.toString())
+                .get().addOnSuccessListener {
+                    it.forEach {
+                        binding.marca.setText(it.get("marca") as String?)
+                        binding.modelo.setText(it.get("modelo") as String?)
+                        binding.color.setText(it.get("color") as String?)
+                    }
                 }
-            }
         }
         //eliminar coche
-        binding.bEliminarCoche.setOnClickListener {
+        /*binding.bEliminarCoche.setOnClickListener {
             db.collection("coches").get().addOnSuccessListener {
                 it.forEach {
                     //borra los registros de la tabla coches
                     it.reference.delete()
                 }
             }
+        }*/
+
+        //eliminar el coche sabiendo la matrícula
+        binding.bEliminarCoche.setOnClickListener {
+            db.collection("coches").document(binding.matricula.text.toString()).delete()
         }
 
         //cierre de sesión
